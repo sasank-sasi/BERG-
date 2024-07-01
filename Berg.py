@@ -93,7 +93,7 @@ class ImageToTextPipeline:
 # Load the saved pipeline
 pipeline = ImageToTextPipeline.load_pipeline('pipeline.pkl', GROQ_API_KEY)
 
-st.title("Berg LPU based Gen Ai")
+st.title("Berg ⚡️ LPU based Gen Ai ")
 
 # Add a text input field
 text_input_value = st.text_input("Enter text or upload an image:", key="text_input")
