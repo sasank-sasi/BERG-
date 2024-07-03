@@ -144,4 +144,6 @@ else:
 # Add a reload button
 if st.button("Reload"):
     st.session_state.clear()
-    st.experimental_rerun()
+    st.rerun()
+
+    
