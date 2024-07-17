@@ -9,8 +9,8 @@ from groq import Groq
 from requests.exceptions import ConnectionError, Timeout, RequestException
 from tenacity import retry, wait_exponential, stop_after_attempt
 
-# Set your Gorq AI API key
-GROQ_API_KEY = os.getenv("GROQ_API_KEY", "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")
+# Set your Groq AI API key
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "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")
 
 if not GROQ_API_KEY:
     raise ValueError("Please set your API key.")
@@ -91,9 +91,9 @@ class ImageToTextPipeline:
         return pipeline
 
 # Load the saved pipeline
-pipeline = ImageToTextPipeline.load_pipeline('pipeline.pkl', GROQ_API_KEY)
+pipeline = ImageToTextPipeline.load_pipeline('vatta.pkl', GROQ_API_KEY)
 
-st.title("Berg ⚡️ LPU based Gen Ai ")
+st.title("Berg ⚡️ LPU based Gen Ai")
 
 # Add a text input field
 text_input_value = st.text_input("Enter text or upload an image:", key="text_input")
@@ -123,8 +123,8 @@ if uploaded_image:
     # Remove the temporary image file
     os.remove(temp_image_path)
 
-    # Reset the uploaded image
-    uploaded_image = None
+    # Remove the uploaded file by clearing the file uploader
+    st.session_state.uploaded_image = None
 
 elif text_input_value:
     # Process the text input using the pipeline
@@ -144,6 +144,4 @@ else:
 # Add a reload button
 if st.button("Reload"):
     st.session_state.clear()
-    st.rerun()
-
-    
+    st.experimental_rerun()
